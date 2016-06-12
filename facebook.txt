@@ -1,0 +1,158 @@
+https://www.coursera.org/learn/web-development-project/discussions/all/threads/2RNP2RytEeaPqRI66g-Cyw
+Hi Jogesh and Jerry
+
+I somehow could not leave this alone and after several really long nights I finally got it to work yesterday night. :)
+
+0.) Implement the Login button in our front-end
+<button ng-click="doLoginFacebook()" class="btn btn-block">Connect with Facebook</button>
+
+0a.) Enhance our LoginController
+$scope.doLoginFacebook = function() {
+  if($scope.rememberMe) {
+    $localStorage.storeObject('userinfo',$scope.loginData);
+  }
+  AuthFactory.loginFacebook($scope.loginData);
+};
+
+0b.) Enhance our AuthFactory implementation in services.js
+Avoid cors issue in Facebook redirect
+
+authFac.loginFacebook = function() {
+  window.location = window.location.protocol + '//' + window.location.host + '/api/v1/users/facebook';
+};
+
+1.) Implement Facebook callback
+Redirect back to our main page and pass the token and other information via GET variables.
+
+exports.facebookCallback = function(req, res) {
+  passport.authenticate('facebook', {
+  successRedirect: '/',
+  failureRedirect: '/' },
+
+  function(err, user, info) {
+    if(err) { return handleError(res, err); }
+      if (!user) {
+        return res.status(401).json({
+          err: info
+        });
+      }
+
+      req.logIn(user, function(err) {
+        if (err) {
+          return res.status(500).json({
+            err: 'Could not log in user'
+          });
+        }
+
+        var token = Verify.getToken(user);
+        //http://stackoverflow.com/questions/11758079/how-to-get-the-url-parameters-using-angular-js
+        //use Hashbang mode to be compatible with older browsers
+        //https://docs.angularjs.org/guide/$location
+        var newLocation = '/#!/?';
+        newLocation += 'success=true&';
+        newLocation += 'token=' + token+'&';
+        newLocation += 'username=' + user.username;
+        res.writeHead(302, {'Location': newLocation});
+        res.end();
+      });
+    })
+})(req,res);
+
+
+2.) Get the redirect to our angularjs page to work:
+Put the following code to the HEAD section of your main AngularJS page.
+
+<!-- Fix Facebook callback URL-->
+<script type="text/javascript">
+
+// Remove the ugly Facebook appended hash
+// <https://github.com/jaredhanson/passport-facebook/issues/12>
+// http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
+
+if (window.location.hash && window.location.hash == '#_=_') {
+  if (window.history && history.pushState) {
+    window.history.pushState("", document.title,window.location.pathname);
+  } else {
+    // Prevent scrolling by storing the page's current scroll offset
+    var scroll = {
+      top: document.body.scrollTop,
+      left: document.body.scrollLeft
+    };
+
+    window.location.hash = '';
+
+    // Restore the scroll offset, should be flicker free
+    document.body.scrollTop = scroll.top;
+    document.body.scrollLeft = scroll.left;
+  }
+}
+</script>
+
+
+3.) Make it possible to read content of GET variables at front-end
+Change in app.js to set the hashPrefix character
+
+angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube-embed'])
+.config(['$locationProvider', function($locationProvider) {
+  //allow reading GET variables passed via main page URL
+  //this is required for the OAuth Facebook integration
+  //the default is '!' but whithout specifing this it wont work
+  //$locationProvider requires ngRout module
+  //https://docs.angularjs.org/guide/$location
+  $locationProvider.hashPrefix('!');
+}])
+
+
+4.) Make it possible to store user information from the HeaderController
+In services.js modify the AuthFactory and add the following function
+
+authFac.storeUser = function(credentials) {
+  storeUserCredentials(credentials);
+};
+
+
+5.) Handle the token and username at the front-end
+Extend our HeaderController class in controllers.js to handle the Oauth information
+
+.controller('HeaderController', ['$scope', '$state' ,'$stateParams', '$rootScope', 'AuthFactory',
+function ($scope, $state, $stateParams, $rootScope, AuthFactory) {
+  $scope.loggedIn = false;
+  $scope.username = '';
+
+  //read GET variables from GET request set by redirect from Facebook callback
+  var token = $scope.$location.search().token;
+  var succes = $scope.$location.search().success;
+  var username = $scope.$location.search().username;
+
+  if (succes) {
+    AuthFactory.storeUser({username:username, token: token});
+    $rootScope.$broadcast('login:Successful');
+  }
+
+  if(AuthFactory.isAuthenticated()) {
+    $scope.loggedIn = true;
+    $scope.username = AuthFactory.getUsername();
+  }
+
+  $scope.logOut = function() {
+    AuthFactory.logout();
+    $scope.loggedIn = false;
+    $scope.username = '';
+  };
+
+  $rootScope.$on('login:Successful', function () {
+    $scope.loggedIn = AuthFactory.isAuthenticated();
+    $scope.username = AuthFactory.getUsername();
+  });
+
+  $rootScope.$on('registration:Successful', function () {
+    $scope.loggedIn = AuthFactory.isAuthenticated();
+    $scope.username = AuthFactory.getUsername();
+  });
+
+  $scope.stateis = function(curstate) {
+    return $state.is(curstate);
+  };
+}])
+
+I am unsure if it is OK, from a security side, to expose the token and user info via GET request. I guess HTTP interceptor would be nice, too.

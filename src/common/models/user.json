@@ -1,0 +1,58 @@
+{
+  "avatar":{
+    "type": "String",
+    "required": true
+  },
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "String",
+    "required": true
+  },
+  "username": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "''",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "''",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "OauthId": {
+    "type":"String"
+  },
+  "OauthToken": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}

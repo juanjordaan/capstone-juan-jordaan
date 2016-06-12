@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- inject-vendor:css -->
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+	<link rel="stylesheet" href="/bower_components/bootstrap-social/bootstrap-social.css" />
+	<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="/bower_components/isteven-angular-multiselect/isteven-multi-select.css" />
+	<link rel="stylesheet" href="/bower_components/angular-growl-v2/build/angular-growl.css">
+  <!-- endinject -->
+
+	<!-- inject:css -->
+	<!-- <link href="/styles/sidebar2.css" rel="stylesheet" /> -->
+	<link href="/styles/styles.css" rel="stylesheet" />
+	<!-- endinject -->
+</head>
+<body ng-controller="SessionController as session" ng-cloak>
+	<div ng-include="'/app/layout/layout.html'">
+		Loading Angular ...
+	</div>
+
+	<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+	<!-- inject-vendor:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+  <script src="/bower_components/webcamjs/webcam.js"></script>
+  <script src="/bower_components/ng-camera/dist/ng-camera.js"></script>
+  <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+  <script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+  <script src="/bower_components/isteven-angular-multiselect/isteven-multi-select.js"></script>
+	<script src="/bower_components/angular-socket-io/socket.js"></script>
+	<script src="/bower_components/angular-growl-v2/build/angular-growl.js"></script>
+	<script src="/bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+  <!-- endinject -->
+
+	<!-- inject:js -->
+  <script src="/app/app.module.js"></script>
+  <script src="/app/about/about.module.js"></script>
+  <script src="/app/contact/contact.module.js"></script>
+  <script src="/app/dashboard/dashboard.module.js"></script>
+  <script src="/app/dashboard/messages/messages.module.js"></script>
+  <script src="/app/dashboard/owner/owner.module.js"></script>
+  <script src="/app/dashboard/provider/provider.module.js"></script>
+  <script src="/app/dashboard/provider/skill/skill.module.js"></script>
+	<script src="/app/dashboard/provider/search/search.module.js"></script>
+  <script src="/app/downloads/resources.module.js"></script>
+  <script src="/app/home/home.module.js"></script>
+  <script src="/app/layout/layout.module.js"></script>
+  <script src="/app/members/login/login.module.js"></script>
+  <script src="/app/members/logout/modal/logout.module.js"></script>
+  <script src="/app/members/members.module.js"></script>
+  <script src="/app/members/profile/profile.module.js"></script>
+  <script src="/app/members/recover/recover.module.js"></script>
+  <script src="/app/members/register/register.module.js"></script>
+  <script src="/app/util/camera/camera.module.js"></script>
+  <script src="/app/util/captcha/captcha.module.js"></script>
+  <script src="/app/util/data/data.module.js"></script>
+  <script src="/app/util/file/file.module.js"></script>
+  <script src="/app/util/route/route.module.js"></script>
+	<script src="/app/util/socket/socket.connection.js"></script>
+	<script src="/app/util/growl/growl.module.js"></script>
+	<script src="/app/util/spinner/spinner.module.js"></script>
+  <script src="/app/util/util.module.js"></script>
+  <script src="/app/about/about.controller.js"></script>
+  <script src="/app/about/about.route.js"></script>
+  <script src="/app/contact/contact.controller.js"></script>
+  <script src="/app/contact/contact.route.js"></script>
+  <script src="/app/dashboard/dashboard.controller.js"></script>
+  <script src="/app/dashboard/dashboard.directive.js"></script>
+  <script src="/app/dashboard/dashboard.route.js"></script>
+  <script src="/app/dashboard/messages/messages.route.js"></script>
+  <script src="/app/dashboard/messages/modal/messages.delete.modal.controller.js"></script>
+  <script src="/app/dashboard/messages/modal/messages.detail.modal.controller.js"></script>
+	<script src="/app/dashboard/messages/socket/socket.messages.controller.js"></script>
+	<script src="/app/dashboard/messages/socket/message.inbox.js"></script>
+	<script src="/app/dashboard/owner/owner.controller.js"></script>
+  <script src="/app/dashboard/owner/owner.route.js"></script>
+  <script src="/app/dashboard/owner/projects/projects.controller.js"></script>
+	<script src="/app/dashboard/owner/bidder/bidder.modal.controller.js"></script>
+  <script src="/app/dashboard/owner/projects/projects.route.js"></script>
+  <script src="/app/dashboard/provider/provider.controller.js"></script>
+  <script src="/app/dashboard/provider/provider.route.js"></script>
+  <script src="/app/dashboard/provider/skill/skill.controller.js"></script>
+  <script src="/app/dashboard/provider/skill/skill.route.js"></script>
+	<script src="/app/dashboard/provider/search/search.controller.js"></script>
+  <script src="/app/dashboard/provider/search/search.route.js"></script>
+	<script src="/app/dashboard/provider/search/bid/bid.modal.controller.js"></script>
+  <script src="/app/downloads/resources.controller.js"></script>
+  <script src="/app/downloads/resources.route.js"></script>
+  <script src="/app/home/home.controller.js"></script>
+  <script src="/app/home/home.route.js"></script>
+  <script src="/app/layout/default.route.js"></script>
+  <script src="/app/layout/footer.directive.js"></script>
+  <script src="/app/layout/layout.controller.js"></script>
+  <script src="/app/layout/top-banner.directive.js"></script>
+  <script src="/app/layout/top-nav.directive.js"></script>
+  <script src="/app/members/auth.service.js"></script>
+  <script src="/app/members/login/login.route.js"></script>
+  <script src="/app/members/profile/profile.controller.js"></script>
+  <script src="/app/members/profile/profile.route.js"></script>
+  <script src="/app/members/recover/recover.controller.js"></script>
+  <script src="/app/members/recover/recover.route.js"></script>
+  <script src="/app/members/recover/recover.service.js"></script>
+  <script src="/app/members/register/register.controller.js"></script>
+  <script src="/app/members/register/register.route.js"></script>
+  <script src="/app/members/token.interceptor.js"></script>
+	<script src="/app/members/user.session.controller.js"></script>
+  <script src="/app/members/header.controller.js"></script>
+  <script src="/app/util/captcha/captcha.constants.js"></script>
+  <script src="/app/util/data/data.constants.js"></script>
+  <script src="/app/util/data/data.service.js"></script>
+  <script src="/app/util/file/reader.directive.js"></script>
+  <script src="/app/util/route/route.provider.js"></script>
+	<script src="/app/util/javascriptNews/javascriptNews.module.js"></script>
+	<script src="/app/util/growl/growl.controller.js"></script>
+  <!-- endinject -->
+
+	<!-- Fix Facebook callback URL-->
+	<script type="text/javascript">
+		// Remove the ugly Facebook appended hash
+		// <https://github.com/jaredhanson/passport-facebook/issues/12>
+		// http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
+		if (window.location.hash && window.location.hash == '#_=_') {
+			if (window.history && history.pushState) {
+				window.history.pushState("", document.title,window.location.pathname);
+			} else {
+				// Prevent scrolling by storing the page's current scroll offset
+				var scroll = {
+					top: document.body.scrollTop,
+					left: document.body.scrollLeft
+				};
+				window.location.hash = '';
+
+				// Restore the scroll offset, should be flicker free
+				document.body.scrollTop = scroll.top;
+				document.body.scrollLeft = scroll.left;
+			}
+		}
+	</script>
+</body>
+</html>

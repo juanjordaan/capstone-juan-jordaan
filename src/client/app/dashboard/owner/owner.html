@@ -1,0 +1,68 @@
+<div class="container" ng-controller="OwnerController">
+  <div class="page-header">
+    <h3>Projects</h3>
+  </div>
+  <div class="row row-content">
+    <div ng-if="vm.projects.length == 0">You have not created projects yet.</div>
+    <div class="panel panel-info" ng-repeat="p in vm.projects">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{p.title}}</h3>
+      </div>
+      <div class="panel-body">
+        <div ng-if="p.status === 'New'">
+          <span class="label label-warn label-md">Status: {{p.status}}</span>
+          <p><strong>Create Date :</strong> {{p.createDate | date}}</p>
+        </div>
+        <div ng-if="p.status === 'Started'">
+          <span class="label label-success label-md">Status: {{p.status}}</span>
+          <p><strong>Start Date :</strong> {{p.startDate | date}}</p>
+        </div>
+        <div ng-if="p.status === 'Completed'">
+          <span class="label label-default label-md">Status: {{p.status}}</span>
+          <p><strong>Completion Date :</strong> {{p.completeDate | date}}</p>
+        </div>
+        <p>{{p.description}}</p>
+        <br />
+        <p><span ng-repeat="skill in p.skill" class="badge">{{skill.name}}</span></p>
+
+        <div class="col-xs-10 col-xs-offset-1" ng-if="p.status === 'Started'">
+          <div class="media">
+            <h4><strong>Service Provider:</strong></h4>
+            <div class="media-left media-middle row">
+              <img class="media-object img-thumbnail" ng-src={{p.provider.avatar}} alt="Menu Image"/>
+            </div>
+            <div class="media-body row">
+              <h2 class="media-heading">{{p.provider.firstname}} {{p.provider.lastname}}</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-10 col-xs-offset-1" ng-if="p.bids.length">
+          <form class="form-inline" role="form" novalidate>
+            <div class="form-group form-group-sm col-xs-12">
+              <h4><strong>Bids Received:</strong></h4>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-xs-10 col-xs-offset-1">
+          <ul class="media-list" ng-repeat="b in p.bids">
+            <li>
+              <blockquote class="blockquote">
+                <header>{{b.bidder.firstname}} {{b.bidder.lastname}} <button class="btn btn-info btn-xs" ng-click="vm.showBidderModal(b.bidder)">About</button></header>
+                <p>{{b.comment}}</p>
+              </blockquote>
+              <p><button class="btn btn-primary btn-xs" ng-click="vm.acceptBid(p._id, b.bidder._id, b.comment)">Accept</button>
+              <button class="btn btn-danger btn-xs" ng-click="vm.declineBid(p._id, b.bidder._id, b.comment)">Decline</button></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12" ng-if="vm.errors.length">
+        <ul class="list-group">
+          <li class="list-group-item alert-danger" ng-repeat="error in vm.errors"><i class="glyphicon glyphicon-alert"></i><strong> {{error}}</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

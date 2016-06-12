@@ -1,0 +1,6 @@
+node_modules
+resources
+doc
+mongodb
+sessions/
+.tmp/

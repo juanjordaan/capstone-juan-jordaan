@@ -1,0 +1,673 @@
+<!DOCTYPE HTML><html><head><title>Capstone API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Capstone API documentation <small>version v1</small></h1><p>http://capstone-juan-jordaan.eu-gb.mybluemix.net/api</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="skills" class="panel-title">/skills</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_skills"><span class="parent"></span>/skills</a> <span class="methods"><a href="#skills_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_skills" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#skills_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve all skills</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="skills_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/skills</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all skills</p></div><ul class="nav nav-tabs"><li class="active"><a href="#skills_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="skills_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="countries" class="panel-title">/countries</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_countries"><span class="parent"></span>/countries</a> <span class="methods"><a href="#countries_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_countries" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#countries_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve All Countries</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="countries_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/countries</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve All Countries</p></div><ul class="nav nav-tabs"><li class="active"><a href="#countries_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="countries_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users" class="panel-title">/users</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users"><span class="parent"></span>/users</a> <span class="methods"><a href="#users_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve all Users</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/users</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all Users</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "string",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users_register"><span class="parent">/users</span>/register</a> <span class="methods"><a href="#users_register_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_users_register" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_register_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a User</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_register_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users</span>/register</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a User</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_register_post_request" data-toggle="tab">Request</a></li><li><a href="#users_register_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_register_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "string",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="users_register_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "string",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__userId_"><span class="parent">/users</span>/{userId}</a> <span class="methods"><a href="#users__userId__get"><span class="badge badge_get">get</span></a> <a href="#users__userId__put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_users__userId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__userId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve a User</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__userId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update a User</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a User</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__get_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__userId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "string",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a User</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__put_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__put_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "email": {
+    "type": "Email",
+    "required": true,
+    "unique": true
+  },
+  "telephone": {
+    "type": "string",
+    "required": true,
+    "unique": true
+  },
+  "password": {
+    "type":"String",
+    "required": true
+  },
+  "firstname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "lastname": {
+    "type": "String",
+    "default": "&#39;&#39;",
+    "required":true
+  },
+  "company": {
+    "type":"String"
+  },
+  "dob": {
+    "type":"Date",
+    "required":true
+  },
+  "country": {
+    "type": "ObjectId",
+    "ref": "Country",
+    "required":true
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill"
+    }
+  ]
+}
+</code></pre></div><div class="tab-pane" id="users__userId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__userId__skills"><span class="parent">/users/{userId}</span>/skills</a> <span class="methods"><a href="#users__userId__skills_get"><span class="badge badge_get">get</span></a> <a href="#users__userId__skills_put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_users__userId__skills" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__userId__skills_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve User Skills</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__userId__skills_put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update User Skills</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__skills_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{userId}</span>/skills</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve User Skills</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__skills_get_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__skills_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__skills_get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__userId__skills_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__skills_put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/users/{userId}</span>/skills</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update User Skills</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__skills_put_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__skills_put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__skills_put_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}
+</code></pre></div><div class="tab-pane" id="users__userId__skills_put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/304" target="_blank">304</a></h2></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="projects" class="panel-title">/projects</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects"><span class="parent"></span>/projects</a> <span class="methods"><a href="#projects_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_projects" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a Project</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/projects</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a Project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "required": true
+  },
+  "company": {
+    "type":"String",
+    "required": true
+  },
+  "contact": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "provider": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill",
+      "required": true
+    }
+  ],
+  "title":{
+    "type":"string",
+    "required":true,
+    "min":3,
+    "max":20
+  },
+  "description":{
+    "type":"string",
+    "required":true,
+    "min":0,
+    "max":1000
+  },
+  "createDate": {
+    "type":"Date",
+    "required":true
+  },
+  "startDate": {
+    "type":"Date"
+  },
+  "completeDate": {
+    "type":"Date"
+  },
+  "providerRating":{
+    "type":"Number",
+    "min":0,
+    "max":10
+  },
+  "providerRatingComment":{
+    "type":"String",
+    "min":0,
+    "max":100
+  },
+  "bids":[
+    "BidSchema"
+  ]
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects__id_"><span class="parent">/projects</span>/{id}</a> <span class="methods"><a href="#projects__id__get"><span class="badge badge_get">get</span></a> <a href="#projects__id__put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_projects__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve a Project</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#projects__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update a Project</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/projects</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve a Project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects__id__get_request" data-toggle="tab">Request</a></li><li><a href="#projects__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/projects</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update a Project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects__id__put_request" data-toggle="tab">Request</a></li><li><a href="#projects__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects__id__bid"><span class="parent">/projects/{id}</span>/bid</a> <span class="methods"><a href="#projects__id__bid_get"><span class="badge badge_get">get</span></a> <a href="#projects__id__bid_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_projects__id__bid" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects__id__bid_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all Bids for the Project</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#projects__id__bid_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create a Bid</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects__id__bid_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/projects/{id}</span>/bid</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all Bids for the Project</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects__id__bid_get_request" data-toggle="tab">Request</a></li><li><a href="#projects__id__bid_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects__id__bid_get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects__id__bid_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "bidder":{
+    "type": "ObjectId",
+    "ref": "User",
+    "required":true
+  },
+  "comment":{
+    "type":"String",
+    "required":true
+  }
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects__id__bid_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/projects/{id}</span>/bid</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create a Bid</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects__id__bid_post_request" data-toggle="tab">Request</a></li><li><a href="#projects__id__bid_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects__id__bid_post_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects__id__bid_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects_owner__companyName_"><span class="parent">/projects/owner</span>/{companyName}</a> <span class="methods"><a href="#projects_owner__companyName__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_projects_owner__companyName_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects_owner__companyName__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve all Company Projects</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects_owner__companyName__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/projects/owner</span>/{companyName}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all Company Projects</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects_owner__companyName__get_request" data-toggle="tab">Request</a></li><li><a href="#projects_owner__companyName__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects_owner__companyName__get_request"><h3>URI Parameters</h3><ul><li><strong>companyName</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects_owner__companyName__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "required": true
+  },
+  "company": {
+    "type":"String",
+    "required": true
+  },
+  "contact": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "provider": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill",
+      "required": true
+    }
+  ],
+  "title":{
+    "type":"string",
+    "required":true,
+    "min":3,
+    "max":20
+  },
+  "description":{
+    "type":"string",
+    "required":true,
+    "min":0,
+    "max":1000
+  },
+  "createDate": {
+    "type":"Date",
+    "required":true
+  },
+  "startDate": {
+    "type":"Date"
+  },
+  "completeDate": {
+    "type":"Date"
+  },
+  "providerRating":{
+    "type":"Number",
+    "min":0,
+    "max":10
+  },
+  "providerRatingComment":{
+    "type":"String",
+    "min":0,
+    "max":100
+  },
+  "bids":[
+    "BidSchema"
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects_provider__userId_"><span class="parent">/projects/provider</span>/{userId}</a> <span class="methods"><a href="#projects_provider__userId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_projects_provider__userId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects_provider__userId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve all Provider Projects</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects_provider__userId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/projects/provider</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all Provider Projects</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects_provider__userId__get_request" data-toggle="tab">Request</a></li><li><a href="#projects_provider__userId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects_provider__userId__get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects_provider__userId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "name": {
+    "type":"String",
+    "required": true
+  },
+  "company": {
+    "type":"String",
+    "required": true
+  },
+  "contact": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "provider": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill",
+      "required": true
+    }
+  ],
+  "title":{
+    "type":"string",
+    "required":true,
+    "min":3,
+    "max":20
+  },
+  "description":{
+    "type":"string",
+    "required":true,
+    "min":0,
+    "max":1000
+  },
+  "createDate": {
+    "type":"Date",
+    "required":true
+  },
+  "startDate": {
+    "type":"Date"
+  },
+  "completeDate": {
+    "type":"Date"
+  },
+  "providerRating":{
+    "type":"Number",
+    "min":0,
+    "max":10
+  },
+  "providerRatingComment":{
+    "type":"String",
+    "min":0,
+    "max":100
+  },
+  "bids":[
+    "BidSchema"
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_projects_provider__userId__ratings"><span class="parent">/projects/provider/{userId}</span>/ratings</a> <span class="methods"><a href="#projects_provider__userId__ratings_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_projects_provider__userId__ratings" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#projects_provider__userId__ratings_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve all Provider Ratings</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="projects_provider__userId__ratings_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/projects/provider/{userId}</span>/ratings</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve all Provider Ratings</p></div><ul class="nav nav-tabs"><li class="active"><a href="#projects_provider__userId__ratings_get_request" data-toggle="tab">Request</a></li><li><a href="#projects_provider__userId__ratings_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="projects_provider__userId__ratings_get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="projects_provider__userId__ratings_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="messages" class="panel-title">/messages</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_messages_user__userId_"><span class="parent">/messages/user</span>/{userId}</a> <span class="methods"><a href="#messages_user__userId__get"><span class="badge badge_get">get</span></a> <a href="#messages_user__userId__post"><span class="badge badge_post">post</span></a> <a href="#messages_user__userId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_messages_user__userId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#messages_user__userId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieve All User Messages</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#messages_user__userId__post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create Message</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#messages_user__userId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Delete a Message</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="messages_user__userId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/messages/user</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieve All User Messages</p></div><ul class="nav nav-tabs"><li class="active"><a href="#messages_user__userId__get_request" data-toggle="tab">Request</a></li><li><a href="#messages_user__userId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="messages_user__userId__get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="messages_user__userId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "owner": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "sender": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "receiver": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "title": {
+    "type":"String",
+    "required": true
+  },
+  "text": {
+    "type":"String"
+  },
+  "status": {
+    "type":"String",
+    "default":"sent"
+  },
+  "sentDate": {
+    "type": "Date"
+  },
+  "receiveDate": {
+    "type": "Date"
+  }
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="messages_user__userId__post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/messages/user</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create Message</p></div><ul class="nav nav-tabs"><li class="active"><a href="#messages_user__userId__post_request" data-toggle="tab">Request</a></li><li><a href="#messages_user__userId__post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="messages_user__userId__post_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="messages_user__userId__post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "owner": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "sender": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "receiver": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "title": {
+    "type":"String",
+    "required": true
+  },
+  "text": {
+    "type":"String"
+  },
+  "status": {
+    "type":"String",
+    "default":"sent"
+  },
+  "sentDate": {
+    "type": "Date"
+  },
+  "receiveDate": {
+    "type": "Date"
+  }
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/422" target="_blank">422</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+    "message":"String"
+}
+</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="messages_user__userId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/messages/user</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Delete a Message</p></div><ul class="nav nav-tabs"><li class="active"><a href="#messages_user__userId__delete_request" data-toggle="tab">Request</a></li><li><a href="#messages_user__userId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="messages_user__userId__delete_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="messages_user__userId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#skills">/skills</a></li><li><a href="#countries">/countries</a></li><li><a href="#users">/users</a></li><li><a href="#projects">/projects</a></li><li><a href="#messages">/messages</a></li></ul></div></div></div></div></body></html>

@@ -1,0 +1,15 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="media">
+        <div class="media-left media-middle">
+          <img class="media-object img-thumbnail" ng-src={{bidder.avatar}} alt="Menu Image"/>
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">{{bidder.firstname}} {{bidder.lastname}}</h2>
+          <p><span><div ng-repeat="skill in bidder.skill" class="badge">{{skill.name}}</div></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

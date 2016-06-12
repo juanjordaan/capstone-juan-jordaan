@@ -1,0 +1,60 @@
+{
+  "name": {
+    "type":"String",
+    "required": true
+  },
+  "status":{
+    "type":"string",
+    "required": true
+  },
+  "owner": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "provider": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "skill": [
+    {
+      "type": "ObjectId",
+      "ref": "Skill",
+      "required": true
+    }
+  ],
+  "title":{
+    "type":"string",
+    "required":true,
+    "min":3,
+    "max":20
+  },
+  "description":{
+    "type":"string",
+    "required":true,
+    "min":0,
+    "max":1000
+  },
+  "createDate": {
+    "type":"Date",
+    "required":true
+  },
+  "startDate": {
+    "type":"Date"
+  },
+  "completeDate": {
+    "type":"Date"
+  },
+  "providerRating":{
+    "type":"Number",
+    "min":0,
+    "max":10
+  },
+  "providerRatingComment":{
+    "type":"String",
+    "min":0,
+    "max":100
+  },
+  "bids":[
+    "BidSchema"
+  ]
+}

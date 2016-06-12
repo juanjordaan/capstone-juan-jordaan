@@ -1,0 +1,13 @@
+<div ng-controller="LayoutController as vm">
+  <mw-top-nav></mw-top-nav>
+  <div class="visible-xs" style="height:15px;"></div>
+  <mw-top-banner></mw-top-banner>
+  <div growl></div>
+  <div id="content" class="content" style="margin-top: 30px!important;">
+    <div ui-view="content">Content is not loading ... :/</div>
+    <div class="spinner">
+      <spinner name="mainSpinner" img-src="images/spinner.gif"></spinner>
+    </div>
+  </div>
+  <mw-footer></mw-footer>
+</div>

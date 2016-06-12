@@ -1,0 +1,187 @@
+.navbar-fixed-top{
+	/*height:50px!important;
+	max-height:50px!important;*/
+	/*margin-bottom: 10px;*/
+	/*position: absolute;*/
+}
+
+.jumbotron{
+	background-color: #3b4b54;
+	color: #ed872d;
+	width: 100%;
+}
+
+.spinner{
+	/*height: 30px!important;
+	max-height: 30px!important;*/
+}
+
+div#content{
+	/*margin-top: 30px!important;*/
+}
+
+.badge{
+	background-color: red;
+}
+
+img.media-object{
+	max-width:200px!important;
+	max-height:200px!important;
+}
+
+nav.sidebar{
+	width: 100%;
+	margin-left: 0px;
+	background-color: #3b4b54!important;
+	color: #ed872d!important;
+	border: 0;
+}
+
+nav.sidebar>.container-fluid>.navbar-header{
+	background-color: #3b4b54;
+}
+
+nav.sidebar>.container-fluid>.navbar-header>.navbar-toggle{
+	border-color: #ed872d;
+}
+
+nav.sidebar>.container-fluid>.navbar-header>.navbar-toggle:hover{
+	background-color: #5c6e78;
+	color: #ed872d;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse{
+	background-color: #3b4b54;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse>ul>li>a{
+	background-color: #3b4b54;
+	color: #ed872d;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse>ul>li>a:hover{
+	background-color: #5c6e78;
+	color: #ed872d;
+}
+
+nav.sidebar .navbar-nav .open .dropdown-menu {
+	border: 0;
+	box-shadow: none;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse>ul>.dropdown>ul>li>a{
+	background-color: #3b4b54;
+	color: #ed872d;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse>ul>.dropdown:focus{
+	background-color: #5c6e78;
+	color: #ed872d;
+}
+
+nav.sidebar>.container-fluid>.navbar-collapse>ul>.dropdown>ul>li>a:hover{
+	background-color: #5c6e78;
+	color: #ed872d;
+}
+
+footer{
+	margin-top: 100px;
+	background-color: #d8dee2;
+	color: black;
+	width: 100%;
+}
+
+.ng-hide {
+	display: none!important;
+}
+
+.drop-box {
+	background: #F8F8F8;
+	border: 5px dashed #DDD;
+	width: 200px;
+	height: 65px;
+	text-align: center;
+	padding-top: 25px;
+	margin: 10px;
+}
+
+#ng-camera-action {
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.3333333;
+	border-radius: 6px;
+}
+#ng-camera-action {
+	color: #fff;
+	background-color: #5bc0de;
+	border-color: #46b8da;
+}
+#ng-camera-action:focus,
+#ng-camera-action.focus {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #1b6d85;
+}
+#ng-camera-action:hover {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+#ng-camera-action:active,
+#ng-camera-action.active,
+.open > .dropdown-toggle#ng-camera-action {
+	color: #fff;
+	background-color: #31b0d5;
+	border-color: #269abc;
+}
+
+#ng-camera-action:active:hover,
+#ng-camera-action.active:hover,
+.open > .dropdown-toggle#ng-camera-action:hover,
+#ng-camera-action:active:focus,
+#ng-camera-action.active:focus,
+.open > .dropdown-toggle#ng-camera-action:focus,
+#ng-camera-action:active.focus,
+#ng-camera-action.active.focus,
+.open > .dropdown-toggle#ng-camera-action.focus {
+	color: #fff;
+	background-color: #269abc;
+	border-color: #1b6d85;
+}
+#ng-camera-action:active,
+#ng-camera-action.active,
+.open > .dropdown-toggle#ng-camera-action {
+	background-image: none;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	background: red;
+	cursor: inherit;
+	display: block;
+}
+.file-input-label {
+	padding: 0px 10px;
+	display: table-cell;
+	vertical-align: middle;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+input[readonly] {
+	background-color: white !important;
+	cursor: text !important;
+}
+
+img.fixed-size { height: auto !important; width: auto !important; }

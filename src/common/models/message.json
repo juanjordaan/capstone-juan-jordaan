@@ -1,0 +1,33 @@
+{
+  "owner": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "sender": {
+    "type": "ObjectId",
+    "ref": "User",
+    "required": true
+  },
+  "receiver": {
+    "type": "ObjectId",
+    "ref": "User"
+  },
+  "title": {
+    "type":"String",
+    "required": true
+  },
+  "text": {
+    "type":"String"
+  },
+  "status": {
+    "type":"String",
+    "default":"sent"
+  },
+  "sentDate": {
+    "type": "Date"
+  },
+  "receiveDate": {
+    "type": "Date"
+  }
+}

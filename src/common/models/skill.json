@@ -1,0 +1,6 @@
+{
+  "name": {
+    "type":"String",
+    "unique": true
+  }
+}

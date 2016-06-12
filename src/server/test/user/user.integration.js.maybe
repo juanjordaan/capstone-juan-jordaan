@@ -1,0 +1,115 @@
+var supertest = require('supertest');
+//var app = require('../test');
+var app = require('../../app');
+var assert = require('assert');
+var testConfig = require('../test-config');
+var Users = require('../../../common/models/user');
+
+var token = '';
+
+describe('Prepare Users Tests', function(){
+  it('should delete all users', function(done) {
+    Users.remove({}, function(err) {
+      if (err) return done(err);
+      done();
+    });
+  });
+});
+
+describe('Users', function(){
+  it('GET /users should fail and return 403', function(done) {
+    supertest(app)
+    .get('/dishes')
+    .expect(403, done);
+    // .end(function(err, res){
+    //   if (err) return done(err);
+    //
+    //   done();
+    // });
+  });
+
+  it('Should Fail Registration with no credentials', function(done){
+    supertest(app)
+    .post('/users/register')
+    .set('Content-Type', 'application/json')
+    .expect(500)
+    .send({})
+    .end(function(err, res){
+      if (err) return done(err);
+
+      done();
+    })
+  });
+
+  it('Should Register with credentials', function(done){
+    supertest(app)
+    .post('/users/register')
+    .set('Content-Type', 'application/json')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .send(testConfig.userCredentials)
+    .end(function(err, res){
+      if (err) return done(err);
+
+      done();
+    })
+  });
+
+  it('Should Login with correct credentials', function(done){
+    supertest(app)
+    .post('/users/login')
+    .set('Content-Type', 'application/json')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .send(testConfig.userCredentials)
+    .end(function(err, res){
+      if (err) return done(err);
+      assert.notEqual(null, res.body.token);
+      assert.notEqual(undefined, res.body.token);
+
+      token = res.body.token;
+
+      done();
+    })
+  });
+
+  it('Should return 403 and NOT be allowed to get users information', function(done){
+    supertest(app)
+    .get('/users/')
+    .set('x-access-token', token)
+    .expect('Content-Type', /json/)
+    .expect(403)
+    .end(function(err, res){
+      if (err) return done(err);
+
+      done();
+    })
+  });
+
+  it('GET /dishes/ should pass', function(done){
+    supertest(app)
+    .get('/dishes/')
+    .set('x-access-token', token)
+    .set('Accept', 'application/json')
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .end(function(err, res){
+      if (err) return done(err);
+
+      done();
+    });
+  });
+
+  it('Should logout and receive a message', function(done){
+    supertest(app)
+    .get('/users/logout')
+    .set('x-access-token', token)
+    .expect('Content-Type', /json/)
+    .expect(200)
+    .end(function(err, res){
+      if (err) return done(err);
+
+      done();
+    })
+  });
+});

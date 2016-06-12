@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default sidebar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <!-- <i class="pull-right hidden-xs showopacity fa fa-dashboard"></i> -->
+        <li><a ui-sref="dashboard" data-toggle="collapse" data-target=".navbar-collapse.in">Dashboard</a></li>
+        <!-- <i class="pull-right hidden-xs showopacity glyphicon glyphicon-inbox"></i> -->
+        <li><a ui-sref=".messages" data-toggle="collapse" data-target=".navbar-collapse.in">Messages</a></li>
+        <li class="dropdown">
+          <!-- </span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-link"></span> -->
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Provider<span class="caret"></a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="" ui-sref=".provider" data-toggle="collapse" data-target=".navbar-collapse.in">Provider Overview</a></li>
+            <li><a href="" ui-sref=".skill" data-toggle="collapse" data-target=".navbar-collapse.in">Profile</a></li>
+            <li><a href="" ui-sref=".search" data-toggle="collapse" data-target=".navbar-collapse.in">Project Search</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <!-- </span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span> -->
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Owner<span class="caret"></a>
+          <ul class="dropdown-menu forAnimate" role="menu">
+            <li><a href="" ui-sref=".owner" data-toggle="collapse" data-target=".navbar-collapse.in">Owner Overview</a></li>
+            <li><a href="" ui-sref=".project" data-toggle="collapse" data-target=".navbar-collapse.in">Create Project</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- -------------------------------------------- -->
+<!-- https://github.com/asyraf9/bootstrap-sidebar -->
+<!-- -------------------------------------------- -->
+
+
+
+
+
+<!-- http://www.bootstrapzero.com/bootstrap-template/facebook -->
+<!-- <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+  </ul>
+
+  <ul class="nav hidden-xs" id="lg-menu">
+    <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
+    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
+    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
+    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+  </ul>
+
+  <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+    <li>
+      <a href="http://www.bootply.com"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>
+    </li>
+  </ul>
+
+  <ul class="nav visible-xs" id="xs-menu">
+    <li><a href="#featured" class="text-center"><i class="glyphicon glyphicon-list-alt"></i></a></li>
+    <li><a href="#stories" class="text-center"><i class="glyphicon glyphicon-list"></i></a></li>
+    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-paperclip"></i></a></li>
+    <li><a href="#" class="text-center"><i class="glyphicon glyphicon-refresh"></i></a></li>
+  </ul>
+</div> -->

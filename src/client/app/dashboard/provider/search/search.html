@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="page-header">
+    <h3>New Projects</h3>
+  </div>
+  <div class="row row-content">
+    <div class="col-xs-12 col-sm-8">
+      <div ng-if="vm.projects.length == 0">No Projects exist matching any of your skills.</div>
+      <div class="media" ng-repeat="p in vm.projects">
+        <div class="media-left media-middle">
+          <img class="media-object img-thumbnail" ng-src={{p.owner.avatar}} alt="Menu Image"/>
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">{{p.title}}</h2>
+          <p>{{p.description}}</p>
+          <br />
+          <p><span ng-repeat="skill in p.skill" class="badge">{{skill.name}}</span></p>
+          <p><button class="btn btn-primary btn-xs" ng-click="vm.showBidModal(p)">Make Bid</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

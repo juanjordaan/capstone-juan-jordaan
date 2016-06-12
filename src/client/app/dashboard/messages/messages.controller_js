@@ -1,0 +1,72 @@
+(function() {
+  'use strict';
+
+  angular
+  .module('app.dashboard.messages')
+  .controller('MessagesController', MessagesController);
+
+  MessagesController.$inject = ['dataservice', 'ModalService', 'AuthenticationService'];
+  function MessagesController(dataservice, ModalService, AuthenticationService) {
+    var vm = this;
+
+    vm.messages = [];
+    vm.getMessages = getMessages;
+    vm.showConfirmDelete = showConfirmDelete;
+    vm.showMessage = showMessage;
+    vm.deleteMessage = deleteMessage;
+
+    getMessages();
+
+    function getMessages(){
+      dataservice.messageInbox().list({'userId':AuthenticationService.user._id}).$promise.then(
+        function(response){ vm.messages = response; },
+        function(response){ console.log( 'Error: ' + response.status + ' ' + response.statusText ); }
+      );
+    }
+
+    function deleteMessage(message){
+      dataservice.messages().delete({'messageId':message._id}).$promise.then(
+        function(response){ getMessages(); },
+        function(response){ console.log( 'Error: ' + response.status + ' ' + response.statusText ); }
+      );
+    }
+
+    function showConfirmDelete(message){
+      ModalService
+      .showModal({
+        templateUrl: 'app/dashboard/messages/modal/messages.delete.modal.html',
+        controller: 'MessagesDeleteModalController',
+        inputs: {
+          message: message
+        }
+      })
+      .then(function(modal) {
+        modal.element.modal();
+        modal.close.then(function(result) {
+          if(result.operation){
+            vm.deleteMessage(result.message);
+          }
+        });
+      });
+    }
+
+    function showMessage(message){
+      ModalService
+      .showModal({
+        templateUrl: 'app/dashboard/messages/modal/messages.detail.modal.html',
+        controller: 'MessagesDetailModalController',
+        inputs: {
+          message: message
+        }
+      })
+      .then(function(modal) {
+        modal.element.modal();
+        modal.close.then(function(result) {
+          if(result.operation){
+            vm.deleteMessage(result.message);
+          }
+        });
+      });
+    }
+  }
+})();

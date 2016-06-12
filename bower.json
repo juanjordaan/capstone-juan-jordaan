@@ -1,0 +1,37 @@
+{
+  "author": "Juan Jordaan",
+  "name": "capstone-juan-jordaan",
+  "description": "Coursera Capstone Project",
+  "version": "0.0.1",
+  "homepage": "http://capstone-juan-jordaan.eu-gb.mybluemix.net/",
+  "repository": {
+    "type": "git",
+    "url": "https://juan_jordaan1234@bitbucket.org/juan_jordaan1234/06_capstone.git"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "bootstrap-social": "^4.12.0",
+    "font-awesome": "^4.5.0",
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18",
+    "angular-resource": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-sanitize": "^1.5.0",
+    "angular-recaptcha": "^3.0.3",
+    "ng-camera": "^0.1.3",
+    "webcamjs": "https://github.com/jhuckaby/webcamjs.git#^1.0.6",
+    "ng-file-upload": "^12.0.4",
+    "angular-modal-service": "^0.9.10",
+    "isteven-angular-multiselect": "angular-multi-select#^4.0.0",
+    "socket.io": "^1.4.6",
+    "angular-growl-v2": "^0.7.9",
+    "angular-socket-io": "^0.7.0",
+    "angular-spinners": "^3.1.2"
+  },
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "test"
+  ]
+}

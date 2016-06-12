@@ -1,0 +1,216 @@
+#%RAML 0.8
+title: Capstone
+version: v1
+baseUri: http://capstone-juan-jordaan.eu-gb.mybluemix.net/api
+# securedBy: [oauth_2_0]
+# securitySchemes:
+  # - oauth_2_0: !include securitySchemes/oauth_2_0.raml
+mediaType: application/json
+schemas:
+  - User: !include ../common/models/user.json
+  - Skill: !include ../common/models/skill.json
+  - Error: !include ../common/dto/error.json
+  - Project: !include ../common/models/project.json
+  - Rating: !include ../common/dto/rating.json
+  - ID: !include ../common/dto/id.json
+  - Message: !include ../common/models/message.json
+  - Country: !include ../common/models/country.json
+  - Bid: !include ../common/models/bid.json
+protocols:
+  - HTTP
+  - HTTPS
+/skills:
+  get:
+    description: Retrieve all skills
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Skill
+            #schema: [Skill]
+/countries:
+  get:
+    description: Retrieve All Countries
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Country
+            #schema: [Country]
+/users:
+  get:
+    description: Retrieve all Users
+    responses:
+      200:
+        body:
+          application/json:
+            schema: User
+            #schema: [User]
+  /register:
+    post:
+      description: Create a User
+      body:
+        application/json:
+          schema: User
+      responses:
+        201:
+          body:
+            application/json:
+              schema: User
+        422:
+          body:
+            application/json:
+              schema: Error
+              #schema: [Error]
+  /{userId}:
+    uriParameters:
+      userId:
+        type: string
+    get:
+      description: Retrieve a User
+      responses:
+        200:
+          body:
+            application/json:
+              schema: User
+    put:
+      description: Update a User
+      body:
+        application/json:
+          schema: User
+      responses:
+        200:
+        304:
+    /skills:
+      get:
+        description: Retrieve User Skills
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Skill
+                #schema: [Skill]
+      put:
+        description: Update User Skills
+        body:
+          application/json:
+            schema: Skill
+            #schema: [Skill]
+        responses:
+          200:
+          304:
+/projects:
+  post:
+    description: Create a Project
+    responses:
+      201:
+        body:
+          application/json:
+            schema: Project
+      422:
+        body:
+          application/json:
+            schema: Error
+            #schema: [Error]
+  /{id}:
+    get:
+      description: Retrieve a Project
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Country
+    put:
+      description: Update a Project
+      responses:
+        422:
+          body:
+            application/json:
+              schema: Error
+        200:
+    /bid:
+      get:
+        description: Get all Bids for the Project
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Bid
+                #schema: [Bid]
+      post:
+        description: Create a Bid
+        responses:
+          201:
+            body:
+          422:
+            body:
+              application/json:
+                schema: Error
+
+  /owner:
+    /{companyName}:
+      uriParameters:
+        companyName:
+          type: string
+      get:
+        description: Retrieve all Company Projects
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Project
+                #schema: [Project]
+  /provider:
+    /{userId}:
+      uriParameters:
+        userId:
+          type: string
+      get:
+        description: Retrieve all Provider Projects
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Project
+                #schema: [Project]
+      /ratings:
+        get:
+          description: Retrieve all Provider Ratings
+          responses:
+            200:
+              body:
+                application/json:
+                  schema: Rating
+                  #schema: [Rating]
+/messages:
+  /user:
+    /{userId}:
+      uriParameters:
+        userId:
+          type: string
+      get:
+        description: Retrieve All User Messages
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Message
+                #schema: [Message]
+
+      post:
+        description: Create Message
+        responses:
+          201:
+            body:
+              application/json:
+                schema: Message
+          422:
+            body:
+              application/json:
+                schema: Error
+                #schema: [Error]
+
+      delete:
+        description: Delete a Message
+        responses:
+          200:
